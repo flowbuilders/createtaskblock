@@ -1,5 +1,3 @@
-require('https://s3-ap-southeast-2.amazonaws.com/eluclients/StaticActivity/lightning/styles/salesforce-lightning-design-system.min.css');
-
 var SDK = require('https://amcleod72.github.io/createtaskblock/blocksdk.js');
 var sdk = new SDK();
 
