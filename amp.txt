@@ -1,4 +1,3 @@
-<!--
 %%[
 	VAR @WhatId
 	IF _messagecontext == 'SEND' THEN
@@ -21,4 +20,3 @@
 		ENDIF
 	ENDIF
 ]%%
--->
