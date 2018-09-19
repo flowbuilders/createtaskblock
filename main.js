@@ -18,21 +18,22 @@ $('document').ready(function() {
     	};
     }
 
-    function paintSettings () {
-        console.log('Painting Settings');
+    function fillSettings () {
     	document.getElementById('crm-id-field').value = crmIdField;
     }
 
-    function paintMap() {
-        console.log('Painting Map');
-        console.log('crm-id-field is ' + document.getElementById('crm-id-field').value);
+    function updateMe() {
     	crmIdField = document.getElementById('crm-id-field').value;
-        console.log('crmIdField is ' + crmIdField);
     	if (!crmIdField) {
     		return;
     	}
 
-    	sdk.setContent('<p>' + crmIdField + '</p>');
+        // Generate required AMPScript
+        var amp = '%%[\n';
+        amp += 'SET @crmfield = AttributeValue("' + crmIdField + '")\n';
+        amp += '\n]%%';
+
+    	sdk.setContent(amp);
         //console.log('sdk content is : ' + sdk.getContent());
     	sdk.setData({
     		crmIdField: crmIdField
@@ -40,13 +41,11 @@ $('document').ready(function() {
     }
 
     sdk.getData(function (data) {
-        console.log('Running getData');
     	crmIdField = data.crmIdField;
-    	paintSettings();
+    	fillSettings();
     });
 
     document.getElementById('workspace').addEventListener("input", function () {
-        console.log('Event Listener Running');
-        debounce(paintMap, 500)();
+        debounce(updateMe, 500)();
     });
 });
