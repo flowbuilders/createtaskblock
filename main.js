@@ -33,6 +33,7 @@ $('document').ready(function() {
     	}
 
     	sdk.setContent('<p>' + crmIdField + '</p>');
+        console.log('sdk content is : ' + sdk.getContent('crmIdField'));
     	sdk.setData({
     		crmIdField: crmIdField
     	});
