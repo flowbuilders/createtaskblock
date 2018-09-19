@@ -1,5 +1,4 @@
-var SDK = require('blocksdk');
-var sdk = new SDK();
+var sdk = new window.sfdc.BlockSDK();
 
 var address, width, height, zoom, link, mapsKey;
 
