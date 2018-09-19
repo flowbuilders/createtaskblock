@@ -19,11 +19,13 @@ $('document').ready(function() {
     }
 
     function paintSettings () {
+        console.log('Painting Settings');
     	document.getElementById('crm-id-field').value = crmIdField;
     }
 
     function paintMap() {
-    	crmIdField = document.getElementById('crm-id-field').value;
+        console.log('Painting Map');
+    	crmIdField = document.getElementById('crm-id-field').value || '';
     	if (!crmIdField) {
     		return;
     	}
@@ -36,11 +38,13 @@ $('document').ready(function() {
     }
 
     sdk.getData(function (data) {
+        console.log('Running getData');
     	crmIdField = data.crmIdField || localStorage.getItem('crmIdField');
     	paintSettings();
     });
 
     document.getElementById('workspace').addEventListener("input", function () {
+        console.log('Event Listener Running');
         debounce(paintMap, 500)();
     	paintSettings();
     });
