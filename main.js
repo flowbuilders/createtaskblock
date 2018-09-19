@@ -26,7 +26,7 @@ $('document').ready(function() {
     function paintMap() {
         console.log('Painting Map');
         console.log('crm-id-field is ' + document.getElementById('crm-id-field').value);
-    	crmIdField = document.getElementById('crm-id-field').value);
+    	crmIdField = document.getElementById('crm-id-field').value;
         console.log('crmIdField is ' + crmIdField);
     	if (!crmIdField) {
     		return;
