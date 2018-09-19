@@ -3,6 +3,7 @@ $('document').ready(function() {
     var crmIdField;
 
     function debounce (func, wait, immediate) {
+        console.log('Debouncing');
     	var timeout;
     	return function() {
     		var context = this, args = arguments;
