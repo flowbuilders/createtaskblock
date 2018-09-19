@@ -26,6 +26,7 @@ $('document').ready(function() {
     function paintMap() {
         console.log('Painting Map');
     	crmIdField = document.getElementById('crm-id-field').value || '';
+        console.log('crmIdField is ' + crmIdField);
     	if (!crmIdField) {
     		return;
     	}
@@ -46,6 +47,5 @@ $('document').ready(function() {
     document.getElementById('workspace').addEventListener("input", function () {
         console.log('Event Listener Running');
         debounce(paintMap, 500)();
-    	paintSettings();
     });
 });
