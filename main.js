@@ -41,7 +41,7 @@ $('document').ready(function() {
 
     sdk.getData(function (data) {
         console.log('Running getData');
-    	crmIdField = data.crmIdField);
+    	crmIdField = data.crmIdField;
     	paintSettings();
     });
 
