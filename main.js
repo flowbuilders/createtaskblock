@@ -26,23 +26,22 @@ $('document').ready(function() {
     function paintMap() {
         console.log('Painting Map');
         console.log('crm-id-field is ' + document.getElementById('crm-id-field').value);
-    	crmIdField = document.getElementById('crm-id-field').value || localStorage.getItem('crmIdField');
+    	crmIdField = document.getElementById('crm-id-field').value);
         console.log('crmIdField is ' + crmIdField);
     	if (!crmIdField) {
     		return;
     	}
 
     	sdk.setContent('<p>' + crmIdField + '</p>');
-        console.log('sdk content is : ' + sdk.getContent('crmIdField'));
+        //console.log('sdk content is : ' + sdk.getContent());
     	sdk.setData({
     		crmIdField: crmIdField
     	});
-    	localStorage.setItem('crmIdField', crmIdField);
     }
 
     sdk.getData(function (data) {
         console.log('Running getData');
-    	crmIdField = data.crmIdField || localStorage.getItem('crmIdField');
+    	crmIdField = data.crmIdField);
     	paintSettings();
     });
 
