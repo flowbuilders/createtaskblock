@@ -1,4 +1,4 @@
-var SDK = require('https://amcleod72.github.io/createtaskblock/blocksdk.js');
+var SDK = require('blocksdk.js');
 var sdk = new SDK();
 
 var address, width, height, zoom, link, mapsKey;
