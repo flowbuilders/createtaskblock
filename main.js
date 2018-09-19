@@ -1,4 +1,4 @@
-var SDK = require('blocksdk.js');
+var SDK = require('blocksdk');
 var sdk = new SDK();
 
 var address, width, height, zoom, link, mapsKey;
