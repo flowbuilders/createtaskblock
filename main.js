@@ -2,17 +2,27 @@ $('document').ready(function() {
     var sdk = new window.sfdc.BlockSDK();
     var crmIdField;
 
+    function debounce (func, wait, immediate) {
+    	var timeout;
+    	return function() {
+    		var context = this, args = arguments;
+    		var later = function() {
+    			timeout = null;
+    			if (!immediate) func.apply(context, args);
+    		};
+    		var callNow = immediate && !timeout;
+    		clearTimeout(timeout);
+    		timeout = setTimeout(later, wait);
+    		if (callNow) func.apply(context, args);
+    	};
+    }
+
     function paintSettings () {
     	document.getElementById('crm-id-field').value = crmIdField;
     }
 
     function paintMap() {
     	crmIdField = document.getElementById('crm-id-field').value;
-    	address = document.getElementById('text-input-id-1').value;
-    	width = document.getElementById('slider-id-01').value;
-    	height = document.getElementById('slider-id-02').value;
-    	zoom = document.getElementById('slider-id-03').value;
-    	link = document.getElementById('text-input-id-2').value;
     	if (!crmIdField) {
     		return;
     	}
@@ -30,6 +40,7 @@ $('document').ready(function() {
     });
 
     document.getElementById('workspace').addEventListener("input", function () {
+        debounce(paintMap, 500)();
     	paintSettings();
     });
 });
