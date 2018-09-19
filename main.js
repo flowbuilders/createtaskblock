@@ -30,7 +30,9 @@ $('document').ready(function() {
 
         // Generate required AMPScript
         var amp = '%%[\n';
+        amp += 'IF _messagecontext == 'SEND' THEN\n';
         amp += 'SET @crmfield = AttributeValue("' + crmIdField + '")\n';
+        amp += 'ENDIF\n';
         amp += '\n]%%';
 
     	sdk.setContent(amp);
