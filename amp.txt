@@ -10,7 +10,6 @@
 			/* Scrape VAWP to get HTML for DE Log */
 			SET @HTMLContent = HttpGet(view_email_url)
 			
-
 			/* Update Salesforce CRM */
 			/*
 			SET @SFEmailID = CreateSalesforceObject("EmailMessage",8,"HTMLBODY",@HTMLContent, "SUBJECT",emailname_,"FROMNAME","Marketing Cloud","FROMADDRESS","communication@communication.industry.nsw.gov.au","TOADDRESS",emailaddr,"INCOMING",0,"STATUS",3,"RELATEDTOID",@WhatId)
