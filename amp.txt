@@ -1,6 +1,6 @@
 %%[
 	VAR @WhatId
-	IF _messagecontext == 'SEND' THEN
+	IF _messagecontext == 'SEND' OR _messagecontext == 'PREVIEW' THEN
 		/* Scrape VAWP to get HTML for DE Log */
 		SET @HTMLContent = HttpGet(view_email_url)
 		SET @WhatId = AttributeValue('%%WhatId%%')
