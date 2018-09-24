@@ -1,22 +1,23 @@
 %%[
-	VAR @WhatId
 	IF _messagecontext == 'SEND' OR _messagecontext == 'PREVIEW' THEN
 		/* Scrape VAWP to get HTML for DE Log */
 		SET @HTMLContent = HttpGet(view_email_url)
+		UpsertDE('EmailTaskLog',4,'JobID',jobid,'ListID',listid,'BatchID',_JobSubscriberBatchID,SubscriberID,subscriberid,'SubscriberKey',_subscriberkey,'EmailAddress',emailaddr,'EmailName',emailname_,'WhatId',%%WhatId%%,'VAWP',view_email_url,'HTMLContent',@HTMLContent)
+
+		/* Check to see if we've already created a task for this send
+
 		SET @WhatId = AttributeValue('%%WhatId%%')
 		SET @EmailName = emailname_
 		SET @SubscriberKey = _subscriberkey
 		SET @EmailAddress = emailaddr
 
-
-		/* Check to see if we've already created a task for this send */
 		Set @rs= RetrieveSalesforceObjects('EmailMessage', 'Id', 'TOADDRESS','=',@EmailAddress,'RELATEDTOID','=',@WhatId,'Subject','=',@EmailName)
 
 		IF RowCount(@rs) == 0 THEN
-			/* Create the EmailMessage */
-			SET @emailid = CreateSalesforceObject("EmailMessage",8,"HTMLBODY",@HTMLContent, "SUBJECT", @EmailName,"FROMNAME","Marketing Cloud","FROMADDRESS","communication@communication.industry.nsw.gov.au","TOADDRESS",@EmailAddress,"INCOMING",0,"STATUS",3,"RELATEDTOID",@WhatId)
-			SET @relation = CreateSalesforceObject("EmailMessageRelation",4,"EmailMessageId",@emailid,"RelationAddress",@EmailAddress,"RelationId",@SubscriberKey,"RelationType","ToAddress")
+			SET @SFEmailID = CreateSalesforceObject("EmailMessage",8,"HTMLBODY",@HTMLContent, "SUBJECT", @EmailName,"FROMNAME","Marketing Cloud","FROMADDRESS","communication@communication.industry.nsw.gov.au","TOADDRESS",@EmailAddress,"INCOMING",0,"STATUS",3,"RELATEDTOID",@WhatId)
+			SET @relation = CreateSalesforceObject("EmailMessageRelation",4,"EmailMessageId",@SFEmailID,"RelationAddress",@EmailAddress,"RelationId",@SubscriberKey,"RelationType","ToAddress")
 
 		ENDIF
+		*/
 	ENDIF
 ]%%
