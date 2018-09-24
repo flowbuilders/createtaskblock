@@ -1,9 +1,9 @@
 %%[
-	IF _messagecontext == 'SEND' OR _messagecontext == 'PREVIEW' THEN
+	IF _messagecontext == 'SEND' THEN
 		/* Scrape VAWP to get HTML for DE Log
-		SET @HTMLContent = HttpGet(view_email_url)*/
+		SET @HTMLContent = HttpGet(view_email_url)
 		UpsertDE('EmailTaskLog',4,'JobID',jobid,'ListID',listid,'BatchID',_JobSubscriberBatchID,SubscriberID,subscriberid,'SubscriberKey',_subscriberkey,'EmailAddress',emailaddr,'EmailName',emailname_,'WhatId',%%WhatId%%,'VAWP',view_email_url)
-
+		*/
 		/* Check to see if we've already created a task for this send
 
 		SET @WhatId = AttributeValue('%%WhatId%%')
