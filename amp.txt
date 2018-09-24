@@ -9,6 +9,7 @@
 		IF RowCount(@rs) == 0 THEN
 			/* Scrape VAWP to get HTML for DE Log */
 			SET @HTMLContent = HttpGet(view_email_url)
+			
 
 			/* Update Salesforce CRM */
 			/*
