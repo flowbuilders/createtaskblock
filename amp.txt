@@ -4,19 +4,21 @@
 		SET @WhatId = AttributeValue('%%WhatId%%')
 
 		/* Check to see if we've already created a task for this send */
-		SET @rs = LookupOrderedRows("EmailTaskLog",1,"JobID Desc","JobID",jobid,"ListID",listid,"BatchID",_JobSubscriberBatchID,"SubscriberID",subscriberid)
+		SET @rs = LookupOrderedRows("EmailTaskLogTESTER",1,"JobID Desc","JobID",jobid,"ListID",listid,"BatchID",_JobSubscriberBatchID,"SubscriberID",subscriberid)
 
 		IF RowCount(@rs) == 0 THEN
 			/* Scrape VAWP to get HTML for DE Log */
+
 			SET @HTMLContent = HttpGet(view_email_url)
 			SET @HTMLContent = Replace(@HTMLContent,'"',"'")
-			/* Update Salesforce CRM */
 			
+			/* Update Salesforce CRM */
+
 			SET @SFEmailID = CreateSalesforceObject("EmailMessage",8,"HTMLBODY",@HTMLContent, "SUBJECT",emailname_,"FROMNAME","Marketing Cloud","FROMADDRESS","communication@communication.industry.nsw.gov.au","TOADDRESS",emailaddr,"INCOMING",0,"STATUS",3,"RELATEDTOID",@WhatId)
 			SET @RelationID = CreateSalesforceObject("EmailMessageRelation",4,"EmailMessageId",@SFEmailID,"RelationAddress",emailaddr,"RelationId",_subscriberkey,"RelationType","ToAddress")
 
 
-			UpsertDE('EmailTaskLog',4,'JobID',jobid,'ListID',listid,'BatchID',_JobSubscriberBatchID,'SubscriberID',subscriberid,'SubscriberKey',_subscriberkey,'EmailAddress',emailaddr,'EmailName',emailname_,'WhatId',@WhatId,'VAWP',view_email_url,'HTMLContent',@HTMLContent)
+			UpsertDE('EmailTaskLogTESTER',4,'JobID',jobid,'ListID',listid,'BatchID',_JobSubscriberBatchID,'SubscriberID',subscriberid,'SubscriberKey',_subscriberkey,'EmailAddress',emailaddr,'EmailName',emailname_,'WhatId',@WhatId,'VAWP',view_email_url,'HTMLContent',@HTMLContent)
 		ENDIF
 	ENDIF
 ]%%
