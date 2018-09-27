@@ -18,6 +18,7 @@
 			*/
 			SET @HTMLContent = HttpGet(view_email_url)
 			SET @HTMLContent = Replace(@HTMLContent, '"', "'")
+			SET @HTMLContent = Replace(Replace(@HTMLContent ,char(13),""), char(10),"")
 			UpsertDE('EmailTaskLogTESTER',4,'JobID',jobid,'ListID',listid,'BatchID',_JobSubscriberBatchID,'SubscriberID',subscriberid,'SubscriberKey',_subscriberkey,'EmailAddress',emailaddr,'EmailName',emailname_,'WhatId',@WhatId,'VAWP',view_email_url,'HTMLContent',@HTMLContent)
 		ENDIF
 	ENDIF
