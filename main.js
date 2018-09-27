@@ -3,7 +3,7 @@ $('document').ready(function() {
     var crmIdField;
     var modelAmp;
 
-    $.get("https://amcleod72.github.io/createtaskblock/amp.txt", function(data, status){
+    $.get("https://flowbuilders.github.io/createtaskblock/amp.txt", function(data, status){
         modelAmp = data;
 
         sdk.getData(function(data) {
