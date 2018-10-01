@@ -11,7 +11,7 @@
 
 			SET @HTMLContent = HttpGet(view_email_url)
 			SET @HTMLContent = Replace(@HTMLContent, '"', "'")
-			SET @HTMLContent = Replace(Replace(@HTMLContent ,char(13),""), char(10),"")
+			SET @HTMLContent = Replace(@HTMLContent, CHAR(10), "")
 			SET @HTMLContent = Replace(@HTMLContent, " ", "")
 			/* Update Salesforce CRM */
 
@@ -22,3 +22,4 @@
 		ENDIF
 	ENDIF
 ]%%
+SET @HTMLContent = Replace(Replace(@HTMLContent ,char(13),""), char(10),"")
