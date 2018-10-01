@@ -22,4 +22,3 @@
 		ENDIF
 	ENDIF
 ]%%
-SET @HTMLContent = Replace(Replace(@HTMLContent ,char(13),""), char(10),"")
