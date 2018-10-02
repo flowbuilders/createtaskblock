@@ -12,10 +12,8 @@
 			SET @HTMLContent = HttpGet(view_email_url)
 			SET @HTMLContent = Replace(@HTMLContent, '"', "'")
 			SET @HTMLContent = Replace(Replace(@HTMLContent ,char(13),""), char(10),"")
-			SET @HTMLContent = Replace(@HTMLContent, " ", "")
-			SET @HTMLContent = Replace(@HTMLContent, "styletype", "style type")
-			SET @HTMLContent = Replace(@HTMLContent, "DOCTYPEhtmlPUBLIC'-//W3C//DTDHTML4.01Transitional//EN''http://www.w3.org/TR/html4/loose.dtd'", "DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.01 Transitional//EN' 'http://www.w3.org/TR/html4/loose.dtd'")
-
+			SET @HTMLContent = Replace(Replace(@HTMLContent ,char(09),""), char(11),"")
+			SET @HTMLContent = Replace(@HTMLContent ,char(12),"")
 			/* Update Salesforce CRM */
 
 			SET @SFEmailID = CreateSalesforceObject("EmailMessage",8,"HTMLBODY",@HTMLContent, "SUBJECT",emailname_,"FROMNAME","Marketing Cloud","FROMADDRESS","communication@communication.industry.nsw.gov.au","TOADDRESS",emailaddr,"INCOMING",0,"STATUS",3,"RELATEDTOID",@WhatId)
