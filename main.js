@@ -42,7 +42,7 @@ $('document').ready(function() {
         // Generate required AMPScript
         var amp = modelAmp.replace(/%%WhatId%%/img,crmIdField)
         sdk.setContent(amp);
-        sdk.setSuperContent('Logging an Email against the' + crmIdField);
+        sdk.setSuperContent('Logging an Email against the ' + crmIdField);
         //console.log('sdk content is : ' + sdk.getContent());
         sdk.setData({
             crmIdField: crmIdField
