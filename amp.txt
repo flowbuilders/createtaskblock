@@ -13,7 +13,7 @@
 			SET @HTMLContent = Replace(@HTMLContent, '"', "'")
 			SET @HTMLContent = Replace(Replace(@HTMLContent ,char(13),""), char(10),"")
 			SET @HTMLContent = Replace(@HTMLContent, " ", "")
-			SET @HTMLContent = Replace(@HTMLContent, "DOCTYPEhtmlPUBLIC", "DOCTYPE HTML PUBLIC")
+			SET @HTMLContent = Replace(@HTMLContent, "DOCTYPEhtmlPUBLIC", "DOCTYPE HTML PUBLIC ")
 
 			/* Update Salesforce CRM */
 
