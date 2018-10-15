@@ -1,4 +1,4 @@
-
+<!--
 %%[
 	IF _messagecontext == 'SEND' OR _messagecontext == 'PREVIEW' THEN
 		/* Define the field to use to associate the send with a CRM object */
@@ -21,3 +21,4 @@
 		ENDIF
 	ENDIF
 ]%%
+-->
