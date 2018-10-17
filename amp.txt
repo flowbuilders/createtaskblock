@@ -1,5 +1,5 @@
-<!--/*
 %%[
+/*
 
 	IF _messagecontext == 'SEND' OR _messagecontext == 'PREVIEW' THEN
 		/* Define the field to use to associate the send with a CRM object */
@@ -21,6 +21,5 @@
 			UpsertDE('EmailTaskLogTESTER',4,'JobID',jobid,'ListID',listid,'BatchID',_JobSubscriberBatchID,'SubscriberID',subscriberid,'SubscriberKey',_subscriberkey,'EmailAddress',emailaddr,'EmailName',emailname_,'WhatId',@WhatId,'VAWP',view_email_url,'HTMLContent',@HTMLContent)
 		ENDIF
 	ENDIF
-
+*/
 ]%%
-*/-->
