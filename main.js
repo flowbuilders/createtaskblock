@@ -42,8 +42,8 @@ $('document').ready(function() {
         // Generate required AMPScript
         var amp = modelAmp.replace(/%%WhatId%%/img,crmIdField)
         sdk.setContent(amp);
-        //sdk.setSuperContent("Logging an Email against the '" + crmIdField + "' in the chosen sendable data extension." + " " + "***PREVIEW MODE ENABLED*** - This will not be visible to the recipient of the email ***PREVIEW MODE ENABLED***");
-        //console.log('sdk content is : ' + sdk.getContent());
+        // sdk.setSuperContent("Logging an Email against the '" + crmIdField + "' in the chosen sendable data extension." + " " + "***PREVIEW MODE ENABLED*** - This will not be visible to the recipient of the email ***PREVIEW MODE ENABLED***");
+        // console.log('sdk content is : ' + sdk.getContent());
         sdk.setData({
             crmIdField: crmIdField
         });
