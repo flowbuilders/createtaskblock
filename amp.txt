@@ -1,4 +1,4 @@
-/*
+<!--/*
 %%[
 
 	IF _messagecontext == 'SEND' OR _messagecontext == 'PREVIEW' THEN
@@ -23,4 +23,4 @@
 	ENDIF
 
 ]%%
-*/
+*/-->
