@@ -1,5 +1,5 @@
 %%[
-	IF _messagecontext == 'SEND' OR _messagecontext == 'PREVIEW' THEN
+	IF _messagecontext == 'SEND' THEN
 		/* Define the field to use to associate the send with a CRM object */
 		SET @WhatId = AttributeValue('%%WhatId%%')
 
